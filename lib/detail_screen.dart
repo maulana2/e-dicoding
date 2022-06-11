@@ -11,7 +11,7 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Color(0xffFFFFFF),
         leading: IconButton(
             onPressed: () {
-              
+
             },
             icon: Icon(
               Icons.arrow_back_ios,
@@ -39,7 +39,7 @@ class DetailScreen extends StatelessWidget {
             ),
           ),
           Container(
-            padding: EdgeInsets.only(right: 20, left: 10, top: 20),
+            padding:const EdgeInsets.only(right: 20, left: 10, top: 20),
             height: 190,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
