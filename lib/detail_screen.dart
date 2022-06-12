@@ -1,9 +1,17 @@
 import 'package:dicoding/models/detail_models.dart';
 import 'package:flutter/material.dart';
 
-class DetailScreen extends StatelessWidget {
+class DetailScreen extends StatefulWidget {
   final DetailClass detail;
   DetailScreen({required this.detail});
+
+  @override
+  State<DetailScreen> createState() => _DetailScreenState();
+}
+
+class _DetailScreenState extends State<DetailScreen> {
+  bool checkValue = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -11,7 +19,7 @@ class DetailScreen extends StatelessWidget {
         backgroundColor: Color(0xffFFFFFF),
         leading: IconButton(
             onPressed: () {
-
+              Navigator.pop(context);
             },
             icon: Icon(
               Icons.arrow_back_ios,
@@ -39,21 +47,21 @@ class DetailScreen extends StatelessWidget {
             ),
           ),
           Container(
-            padding:const EdgeInsets.only(right: 20, left: 10, top: 20),
+            padding: const EdgeInsets.only(right: 20, left: 10, top: 20),
             height: 190,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  "Introduction to course",
+                  widget.detail.title,
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
                 ),
                 SizedBox(
                   height: 20,
                 ),
                 Text(
-                  "HTML adalah bahasa yang digunakan untuk membuat halaman web. Bagi yang berkecimpung di dunia perangkat gadget dan ilmu komputer, pasti sudah tidak asing lagi dengan berbagai kode di dalamnya. HTML adalah kependekan dari Hypertext Markup Language.",
+                  widget.detail.paragraph,
                   style: TextStyle(fontSize: 15),
                 ),
               ],
@@ -65,14 +73,14 @@ class DetailScreen extends StatelessWidget {
             child: Row(
               children: [
                 Text(
-                  "3 Lessons",
+                  widget.detail.lesson,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
                 ),
                 Text(
-                  "(1 Hours)",
+                  widget.detail.hours,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
@@ -102,97 +110,29 @@ class DetailScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Introduction to course",
+                          widget.detail.lessonTitle,
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
                         ),
                         Text(
-                          "10 mins",
+                          widget.detail.lessonMins,
                           style: TextStyle(
                             fontSize: 15,
                           ),
                         ),
                       ],
                     ),
-                    Icon(Icons.check_circle)
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                height: 120,
-                decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(30)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image(
-                      image: AssetImage('images/introduction.png'),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Introduction to course",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "10 mins",
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.check_box_outline_blank_rounded)
-                  ],
-                ),
-              ),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: InkWell(
-              onTap: () {},
-              child: Container(
-                padding: EdgeInsets.only(left: 20),
-                height: 120,
-                decoration: BoxDecoration(
-                    color: Colors.grey[400],
-                    borderRadius: BorderRadius.circular(30)),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Image(
-                      image: AssetImage('images/introduction.png'),
-                    ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          "Introduction to course",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold),
-                        ),
-                        Text(
-                          "10 mins",
-                          style: TextStyle(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
-                    Icon(Icons.check_box_outline_blank_rounded)
+                    Checkbox(
+                        value: checkValue,
+                        onChanged: (bool? value) {
+                          setState(() {
+                            if (checkValue == true) {
+                              checkValue = true;
+                            } else if (checkValue == false) {
+                              checkValue = value!;
+                            }
+                          });
+                        })
                   ],
                 ),
               ),

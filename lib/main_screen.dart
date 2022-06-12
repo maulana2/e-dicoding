@@ -1,4 +1,5 @@
 import 'package:dicoding/detail_screen.dart';
+
 import 'package:flutter/material.dart';
 import './models/detail_models.dart';
 
@@ -123,7 +124,9 @@ class _MainScreenState extends State<MainScreen> {
               return InkWell(
                 onTap: () {
                   Navigator.push(context, MaterialPageRoute(builder: (context) {
-                    return DetailScreen(detail: detail,);
+                    return DetailScreen(
+                      detail: detail,
+                    );
                   }));
                 },
                 child: Card(
