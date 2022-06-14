@@ -3,14 +3,9 @@ import 'package:dicoding/detail_screen.dart';
 import 'package:flutter/material.dart';
 import './models/detail_models.dart';
 
-class MainScreen extends StatefulWidget {
-  MainScreen({Key? key}) : super(key: key);
+class MainScreen extends StatelessWidget {
+  const MainScreen({Key? key}) : super(key: key);
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -183,5 +178,6 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
     );
+    ;
   }
 }
